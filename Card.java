@@ -2,9 +2,9 @@
 // Name: Sara Filipinas
 // Date: 6/20/25 (June 20, 2025)
 // What I added:
-// I added a card class with constructors, accessors, mutators, and toString methods  
-// I added ASCII symbols (♥, ♦, ♣, ♠) to the cards based on the suit to create a visually appealing display when printed
-
+// I added a card class with constructors, accessors, mutators, and toString methods.  
+// Added emoji symbols (♥, ♦, ♣, ♠) to the cards based on the suit to create a visually appealing display when printed.
+// Added a compareTo method to compare cards based on their value.
 
 public class Card {
     private String cardSuit;
@@ -23,13 +23,13 @@ public class Card {
     }
 
     // Parameterized constructor
-    // added cardArt to the constructor to assign the ASCII art based on the suit
+    // Added cardArt to the constructor to assign the ASCII art based on the suit
     public Card(String cardSuit, String cardName, int cardValue, String cardPicture) {
         this.cardSuit = cardSuit;
         this.cardName = cardName;
         this.cardValue = cardValue;
         this.cardPicture = cardPicture;
-        this.cardArt = assignArt(cardSuit); // auto-generate card art symbol
+        this.cardArt = assignArt(cardSuit); // added: auto-generate card art symbol
     }
 
     // Accessors (getters)
@@ -65,20 +65,21 @@ public class Card {
     public void setCardPicture(String cardPicture) {
         this.cardPicture = cardPicture;
     }
-    // Added a method to assign ASCII art based on the suit
-    // example: assignArt("hearts") returns "♥"
+    // Added this assignArt method to assign ASCII art based on the suit
+    // example: assignArt("heart") returns "♥"
     private String assignArt(String suit) {
+        //System.out.println("assignArt called with suit: " + suit);
         switch (suit.toLowerCase()) {
-            case "hearts":
+            case "heart":
                 return "♥";
-            case "diamonds":
+            case "diamond":
                 return "♦";
-            case "clubs":
+            case "club":
                 return "♣";
-            case "spades":
+            case "spade":
                 return "♠";
             default:
-                return "?"; // Unknown suit
+                return "❓ "; // Unknown suit
         }
     }
     // Added a getter for cardArt, returns the visual symbol
@@ -86,9 +87,30 @@ public class Card {
         return cardArt;
     }
 
-    // toString method
+    // Added a toString method
     @Override
     public String toString() {
-        return cardArt + cardName + " of " + cardSuit + " (Value: " + cardValue + ")";
+        return "[" + cardArt + "] " + cardName + " of " + cardSuit
+            + " (Value: " + cardValue + ", Picture: " + cardPicture + ")";
     }
+
+    // Added a compareTo method to compare cards based on their value
+    public int compareTo(Card other) {
+        if (this.cardValue > other.cardValue) {
+            return 1; // if this card is greater than the other
+        } else if (this.cardValue < other.cardValue) {
+            return -1; // if this card is less than the other
+        } else {
+            return 0; // they are equal
+        }
+    }
+    // added a method to check if the card is a face card (Jack, Queen, King, Ace)
+    public boolean isFaceCard() {
+        return cardName.equalsIgnoreCase("Jack") ||
+               cardName.equalsIgnoreCase("Queen") ||
+               cardName.equalsIgnoreCase("King") ||
+               cardName.equalsIgnoreCase("Ace");
+    }
+
+
 }

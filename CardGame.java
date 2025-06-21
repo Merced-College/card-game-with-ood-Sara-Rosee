@@ -30,9 +30,10 @@ public class CardGame {
 
 		while(input.hasNext()) {
 			String[] fields  = input.nextLine().split(",");
-			//	public Card(String cardSuit, String cardName, int cardValue, String cardPicture) {
-			Card newCard = new Card(fields[0], fields[1].trim(),
-					Integer.parseInt(fields[2].trim()), fields[3]);
+			// create a new card using 4 values from cards.txt
+			// fields[0] = suit, fields[1] = name, fields[2] = value, fields[3] = picture
+			Card newCard = new Card(fields[0].trim(), fields[1].trim(),
+					Integer.parseInt(fields[2].trim()), fields[3].trim());
 			deckOfCards.add(newCard);	
 		}
 
@@ -49,6 +50,19 @@ public class CardGame {
 		System.out.println("players cards");
 		for(Card c: playerCards)
 			System.out.println(c);
+		
+		// added a print statement to compare and check face cards
+		System.out.println("-- compareTo and isFaceCard test --");
+		// add a test to compare first two cards
+		if (playerCards.size() >= 2) {
+			Card a = playerCards.get(0), b = playerCards.get(1);
+			System.out.println(a + "vs" + b + " -> compare:" + a.compareTo(b));
+		}
+		// added a test to check if the first card is a face card
+		for (Card c: playerCards) {
+			System.out.println(c.getCardName() + (c.isFaceCard() ? " is a face card." : " is not a face card."));
+		}
+
 
 		System.out.println("pairs is " + checkFor2Kind());
 
