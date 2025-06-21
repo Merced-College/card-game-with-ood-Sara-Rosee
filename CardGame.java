@@ -1,7 +1,6 @@
 // cardsWithOOD
 // Name: Sara Filipinas
 // Date: 6/20/25 (June 20, 2025)
-// What I added: 
 
 //package cardGame;
 

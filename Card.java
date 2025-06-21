@@ -5,6 +5,7 @@
 // I added a card class with constructors, accessors, mutators, and toString methods.  
 // Added emoji symbols (♥, ♦, ♣, ♠) to the cards based on the suit to create a visually appealing display when printed.
 // Added a compareTo method to compare cards based on their value.
+// Added a isFaceCard to determine if a card is a face card (Jack, Queen, King, Ace).
 
 public class Card {
     private String cardSuit;
