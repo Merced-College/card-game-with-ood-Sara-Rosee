@@ -1,4 +1,9 @@
-package cardGame;
+// cardsWithOOD
+// Name: Sara Filipinas
+// Date: 6/20/25 (June 20, 2025)
+// What I added: 
+
+//package cardGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,6 +12,7 @@ import java.util.Scanner;
 
 public class CardGame {
 
+	// these are the data structures to hold our cards
 	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
 	private static ArrayList<Card> playerCards = new ArrayList<Card>();
 
